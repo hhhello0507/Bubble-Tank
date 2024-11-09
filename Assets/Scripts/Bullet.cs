@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -29,8 +28,7 @@ public class Bullet : MonoBehaviour
                     break;
                 case EnemyInfo.EnemyState.Bubble:
                     Destroy(other.gameObject);
-                    var gameManager = FindObjectOfType<GameManager>();
-                    gameManager.Score += Random.Range(10, 20);
+                    GameManager.Instance.Score += Random.Range(10, 20);
                     break;
                 default:
                     break;

@@ -9,6 +9,7 @@ public class PlayerFire : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.GameState != GameState.Running) return;
         if (Input.GetMouseButtonDown(0))
         {
             var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);

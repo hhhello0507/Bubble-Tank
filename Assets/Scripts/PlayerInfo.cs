@@ -12,7 +12,12 @@ public class PlayerInfo : MonoBehaviour
         get => _hp;
         set
         {
-            if (value < 0) return;
+            // GameOver
+            if (value < 0)
+            {
+                GameManager.Instance.GameState = GameState.GameOver;
+                return;
+            }
             _hp = value;
             SetHpSlider();
         }

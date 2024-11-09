@@ -4,8 +4,12 @@ using Random = UnityEngine.Random;
 
 public class Bubble : MonoBehaviour
 {
+    [SerializeField] private GameObject popEffectPrefab;
+    
     private void Start()
     {
+        var audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 3.0f;
         StartCoroutine(DieCoroutine());
     }
 
@@ -20,6 +24,7 @@ public class Bubble : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
+            Instantiate(popEffectPrefab, transform.position, Quaternion.identity);
             var enemyInfo = other.gameObject.GetComponent<EnemyInfo>();
             switch (enemyInfo.State)
             {

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum EnemyState
 {
@@ -10,16 +12,25 @@ public enum EnemyState
 public class EnemyInfo : MonoBehaviour
 {
     private static float PopTimeRange => Random.Range(3f, 9f);
-
+    
+    [SerializeField] private GameObject popEffectPrefab;
+    
     private EnemyState _state = EnemyState.Default;
     public EnemyState State
     {
         get => _state;
         set
         {
-            if (value == EnemyState.Bubble)
+            switch (value)
             {
-                StartCoroutine(PopCoroutine());
+                case EnemyState.Default:
+                    Instantiate(popEffectPrefab, transform.position, Quaternion.identity);
+                    break;
+                case EnemyState.Bubble:
+                    StartCoroutine(PopCoroutine());
+                    break;
+                default:
+                    break;
             }
             _state = value;
         }

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Bullet : MonoBehaviour
+public class Bubble : MonoBehaviour
 {
     private void Start()
     {

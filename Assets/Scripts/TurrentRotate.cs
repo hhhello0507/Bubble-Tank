@@ -16,6 +16,6 @@ public class TurrentRotate : MonoBehaviour
         
         _mouseX += mouseX * RotationSpeed * Time.deltaTime;
 
-        transform.eulerAngles = new Vector3(0, _mouseX, 0);   
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, _mouseX, transform.eulerAngles.z);   
     }
 }

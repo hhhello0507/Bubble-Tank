@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    private const float MoveSpeed = 1.5f;
+    private const float MoveSpeed = 4.5f;
     private const float Gravity = -9.8f;
     
     private CharacterController _controller;

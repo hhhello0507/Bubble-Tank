@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-    private readonly Vector3 _offset = new(0, 1.5f, -2f);
+    private readonly Vector3 _offset = new(0, 2f, -4f);
 
     private GameObject _player;
 

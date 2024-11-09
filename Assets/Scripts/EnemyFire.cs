@@ -2,12 +2,18 @@ using UnityEngine;
 
 public class EnemyFire : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision other)
+    private PlayerInfo _player;
+
+    private void Start()
     {
-        if (other.gameObject.CompareTag("Player"))
+        _player = FindObjectOfType<PlayerInfo>();
+    }
+
+    private void Update()
+    {
+        if (Vector3.Distance(transform.position, _player.transform.position) < 2f)
         {
-            var playerInfo = FindObjectOfType<PlayerInfo>();
-            playerInfo.Hp -= 10;
+            _player.Hp -= 10;
             Destroy(gameObject);
         }
     }

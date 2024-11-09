@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,8 +29,21 @@ public class PlayerInfo : MonoBehaviour
         SetHpSlider();
     }
 
+    private void Update()
+    {
+        HandleDie();
+    }
+
     private void SetHpSlider()
     {
         hpSlider.value = _hp / (float)MaxHp;
+    }
+
+    private void HandleDie()
+    {
+        if (transform.position.y < -2.5)
+        {
+            GameManager.Instance.GameState = GameState.GameOver;
+        }
     }
 }

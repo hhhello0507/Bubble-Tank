@@ -1,13 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
+public enum EnemyState
+{
+    Default,
+    Bubble
+}
+
 public class EnemyInfo : MonoBehaviour
 {
-    public enum EnemyState
-    {
-        Default,
-        Bubble
-    }
     private static float PopTimeRange => Random.Range(3f, 9f);
 
     private EnemyState _state = EnemyState.Default;
@@ -16,13 +17,9 @@ public class EnemyInfo : MonoBehaviour
         get => _state;
         set
         {
-            switch (value)
+            if (value == EnemyState.Bubble)
             {
-                case EnemyState.Bubble:
-                    StartCoroutine(PopCoroutine());
-                    break;
-                default:
-                    break;
+                StartCoroutine(PopCoroutine());
             }
             _state = value;
         }

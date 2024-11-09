@@ -23,10 +23,10 @@ public class Bubble : MonoBehaviour
             var enemyInfo = other.gameObject.GetComponent<EnemyInfo>();
             switch (enemyInfo.State)
             {
-                case EnemyInfo.EnemyState.Default:
-                    enemyInfo.State = EnemyInfo.EnemyState.Bubble;
+                case EnemyState.Default:
+                    enemyInfo.State = EnemyState.Bubble;
                     break;
-                case EnemyInfo.EnemyState.Bubble:
+                case EnemyState.Bubble:
                     Destroy(other.gameObject);
                     GameManager.Instance.Score += Random.Range(10, 20);
                     break;

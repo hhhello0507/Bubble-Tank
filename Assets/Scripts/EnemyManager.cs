@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    private static float SpawnTimeRange => Random.Range(0.3f, 1f);
+    private const float SpawnMinRange = 1f;
+    private const float SpawnMaxRange = 2f;
+    private static float SpawnTimeRange => Random.Range(SpawnMinRange, SpawnMaxRange);
     
     private const float SpawnPosRange = 5f;
     

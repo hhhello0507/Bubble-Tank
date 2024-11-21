@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
         SetScoreText();
         restartButton.onClick.AddListener(() =>
         {
+            Debug.Log("Restart game");
             Time.timeScale = 1f;
             SceneManager.LoadScene("GameScene");
         });

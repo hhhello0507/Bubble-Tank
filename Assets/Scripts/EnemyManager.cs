@@ -1,23 +1,28 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemyManager : MonoBehaviour
 {
-    private const float SpawnMinRange = 1f;
-    private const float SpawnMaxRange = 2f;
+    private const float SpawnMinRange = 0.05f;
+    private const float SpawnMaxRange = 0.1f;
     private static float SpawnTimeRange => Random.Range(SpawnMinRange, SpawnMaxRange);
     
     private const float SpawnPosRange = 5f;
     
-    [SerializeField] private GameObject spawnPoint;
+    [SerializeField] private List<GameObject> spawnPoints;
     [SerializeField] private GameObject enemyPrefab;
     
     private void Start()
     {
-        StartCoroutine(SpawnCoroutine());
+        spawnPoints.ForEach(sp =>
+        {
+            StartCoroutine(SpawnCoroutine(sp));
+        });
     }
 
-    private IEnumerator SpawnCoroutine()
+    private IEnumerator SpawnCoroutine(GameObject spawnPoint)
     {
         while (true)
         {
